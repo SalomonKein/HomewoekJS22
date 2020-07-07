@@ -12,12 +12,16 @@ function createDraw() {
     console.log(drawButton);
     document.querySelector(`div`).append(input);
     document.querySelector(`div`).append(drawButton);
-    drawButton.addEventListener("click", () => createTabl());
+    drawButton.addEventListener("click", () =>
+     createTabl(),
+    //  drawButton.remove(),
+    //  input.remove()
+     );
 }
 buttonDraw.addEventListener("click", () => createDraw());
 
 function createTabl() {
-    let body = document.querySelector("body"),
+    let div = document.querySelector("div"),
         // tableWidth = document.getElementById("table-width"),
         // tableHeight = document.getElementById("table-height"),
         // width = tableWidth.value,
@@ -47,8 +51,10 @@ function createTabl() {
         tr = document.createElement("tr");
         for (let j = 0; j < 10; j++) {
             td = document.createElement("td");
-            text = document.createTextNode((i + 1) + "." + (j + 1));
-            td.appendChild(text);
+            // text = document.createTextNode((i + 1) + "." + (j + 1));
+            let circle = document.createElement("button")
+            circle.className="circle"
+            td.appendChild(circle);
             tr.appendChild(td);
         }
         table.appendChild(tr);
@@ -56,10 +62,10 @@ function createTabl() {
     console.log(tr);
     console.log(td);
     if (firstTable == null) {
-        return body.appendChild(table);
+        return div.appendChild(table);
     } else {
-        let newTable = body.appendChild(table);
-        return document.body.replaceChild(newTable, firstTable);
+        let newTable = div.appendChild(table);
+        return document.div.replaceChild(newTable, firstTable);
     }
 }
 
