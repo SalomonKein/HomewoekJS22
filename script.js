@@ -37,39 +37,30 @@ function createTabl(input) {
     } else {
         destroyTheButton();
         notification.remove();
-        let div = document.querySelector("div"),
-            tr = "",
-            td = "",
-            firstTable = document.querySelector("table");
-        table = document.createElement("table");
-        for (let i = 0; i < 10; i++) {
-            tr = document.createElement("tr");
-            for (let j = 0; j < 10; j++) {
-                td = document.createElement("td");
+        let div = document.querySelector("div");        
+        let container = document.createElement("div");
+        container.style.width = `${(input.value)*10}px`;
+        container.style.display = "flex";
+        container.style.flexWrap = "wrap";
+        container.style.flexDirection = "row";
+        container.style.justifyContent = "start"
+
+        for (let i = 0; i < 100; i++) {
                 let circle = document.createElement("button")
                 circle.className = "circle"
-                circle.style.background = `#${Math.floor(Math.random()*Math.floor(999999))}`;
+                circle.style.background = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}`;
                 circle.style.width = `${input.value}px`;
                 circle.style.height = `${input.value}px`;
-                console.log(input.value);
                 inicilCircle(circle);
-                td.appendChild(circle);
-                tr.appendChild(td);
+                container.appendChild(circle);
             }
-            table.appendChild(tr);
+            div.appendChild(container);
 
         }
 
-        if (firstTable == null) {
-            return div.appendChild(table);
-
-        } else {
-            let newTable = div.appendChild(table);
-            return document.div.replaceChild(newTable, firstTable);
-
-        }
+        
     }
-}
+
 
 function inicilCircle(circle) {
 
@@ -81,12 +72,12 @@ function inicilCircle(circle) {
 
 function select(button) {
 
-    let table = document.querySelector("table")
-    let selected = table.querySelectorAll('.active');
+    let div = document.querySelector("div")
+    let selected = div.querySelectorAll('.active');
     for (let elem of selected) {
         elem.classList.remove('active');
     }
     button.classList.add('active');
-    table.querySelector(".active").remove();
+    div.querySelector(".active").remove();
 
 }
